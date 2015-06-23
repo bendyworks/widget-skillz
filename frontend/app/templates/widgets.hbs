@@ -1,7 +1,9 @@
 <p>Widgets</p>
-<ul>
-{{#each content as |widget|}}
-  <li>{{widget.name}}</li>
-{{/each}}
-</ul>
-
+<div style="position: absolute;">
+  {{#each content as |widget|}}
+    <div style="{{widget.style}}">
+      <h2>{{widget.name}}</h2>
+      {{{widget.body}}}
+    </div>
+  {{/each}}
+</div>

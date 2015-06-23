@@ -1,12 +1,6 @@
 <p>Widgets</p>
 <div style="position: absolute;">
-  {{#each content as |widget|}}
-    <div style="{{widget.style}}">
-      {{input value=widget.width}}
-      <button {{action "saveWidget" widget}}>Save</button>
-      <h2>{{widget.name}}</h2>
-
-      {{{widget.body}}}
-    </div>
-  {{/each}}
+{{#each content as |widget|}}
+  {{render "widget" widget}}
+{{/each}}
 </div>

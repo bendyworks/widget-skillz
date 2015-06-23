@@ -44,7 +44,7 @@ class Api::WidgetsController < ApplicationController
     respond_to do |format|
       if @widget.update(widget_params)
         format.html { redirect_to @widget, notice: 'Widget was successfully updated.' }
-        format.json { render :show, status: :ok, location: @widget }
+        format.json { render json: @widget }
       else
         format.html { render :edit }
         format.json { render json: @widget.errors, status: :unprocessable_entity }
@@ -70,6 +70,6 @@ class Api::WidgetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def widget_params
-    params.require(:widget).permit(:flavor, :calories, :brand, :shape, :title, :country)
+    params.require(:widget).permit(:name, :body, :location_x, :location_y, :width, :height)
   end
 end

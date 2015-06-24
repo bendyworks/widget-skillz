@@ -16,7 +16,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    'ember-cli-mirage': { enabled: false }
   };
 
   if (environment === 'development') {
@@ -37,6 +38,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV['ember-cli-mirage'] = { enabled: true }
   }
 
   if (environment === 'production') {

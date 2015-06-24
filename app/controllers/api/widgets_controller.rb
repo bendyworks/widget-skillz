@@ -9,13 +9,6 @@ class Api::WidgetsController < ApplicationController
   def show
   end
 
-  def new
-    @widget = Widget.new
-  end
-
-  def edit
-  end
-
   def create
     @widget = Widget.new(widget_params)
 

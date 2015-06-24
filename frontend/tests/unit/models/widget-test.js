@@ -10,3 +10,8 @@ test('it exists', function(assert) {
   // var store = this.store();
   assert.ok(!!model);
 });
+
+test('style has styles in it', function(assert) {
+  var model = this.subject();
+  assert.ok(model.get('style').match(/overflow: hidden;/));
+});

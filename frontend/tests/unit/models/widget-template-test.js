@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('widget-template', 'Unit | Model | widget template', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:widget']
 });
 
 test('it exists', function(assert) {

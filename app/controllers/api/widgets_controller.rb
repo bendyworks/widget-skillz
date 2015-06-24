@@ -21,7 +21,7 @@ class Api::WidgetsController < ApplicationController
 
   def update
     if @widget.update(widget_params)
-      render json: @widget
+      render json: @widget, root: true
     else
       render json: @widget.errors, status: :unprocessable_entity
     end

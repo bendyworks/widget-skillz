@@ -7,6 +7,8 @@ export default DS.Model.extend({
   locationY: DS.attr('number'),
   width: DS.attr('number'),
   height: DS.attr('number'),
+  widgetTemplate: DS.belongsTo('widgetTemplate', {async: true}),
+  templateFields: DS.attr(),
   style: function() {
     return "top: " + this.get('locationY') + "px; left: " + this.get('locationX') +
            "px; height: " + this.get('height') + "px; width: " +

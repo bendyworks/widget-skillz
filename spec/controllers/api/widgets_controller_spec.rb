@@ -6,7 +6,7 @@ describe Api::WidgetsController do
   describe '#index' do
     it 'returns a list of widgets' do
       get(:index)
-      expect(response.body).to eq({ 'widgets' => Widget.all }.to_json)
+      expect(response.body).to eq({'widgets' => Widget.all}.to_json)
     end
   end
 
@@ -27,7 +27,34 @@ describe Api::WidgetsController do
     it 'returns wrapped object' do
       put(:update, widget_update_params)
       expect(response.code).to eq('200')
-      expect(response.body).to eq({'widget' => widget.reload}.to_json)
+      expect(response.body).to eq(widget.reload.to_json(root: true))
+    end
+  end
+
+  describe "#create" do
+    let(:widget_create_params) do
+      { widget: attributes_for(:widget) }
+    end
+
+    it 'creates a widget' do
+      expect do
+        post(:create, widget_create_params)
+      end.to change{Widget.count}.by(1)
+    end
+  end
+
+  describe "#destroy" do
+    it 'destroys a widget' do
+      expect do
+        delete(:destroy, id: widget.id)
+      end.to change{Widget.count}.by(-1)
+    end
+  end
+
+  describe "#show" do
+    it 'returns a widget' do
+      get(:show, id: widget.id)
+      expect(response.body).to eq(widget.to_json(root: true))
     end
   end
 end

@@ -7,13 +7,14 @@ class Api::WidgetsController < ApplicationController
   end
 
   def show
+    render json: @widget, root: true
   end
 
   def create
     @widget = Widget.new(widget_params)
 
     if @widget.save
-      render :show, status: :created, location: @widget
+      render json: @widget, root: true
     else
       render json: @widget.errors, status: :unprocessable_entity
     end

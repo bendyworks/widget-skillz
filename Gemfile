@@ -47,5 +47,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 
   gem 'factory_girl'
+
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
 end
 

@@ -7,6 +7,7 @@ Setup
 -----
 1. Make sure you have git, rvm, ruby, rails, bower, and npm installed. If you're not sure, ask.
 1. Clone and enter the repo.
+1. `npm install -g ember-cli`
 1. `bundle`
 1. `rake db:setup`
 1. `cd frontend/`, `npm install`, `bower install`

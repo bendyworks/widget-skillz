@@ -2,6 +2,10 @@
   {{input value=widget.width}}
   <button {{action "saveWidget" widget}}>Save</button>
   <h2>{{widget.name}}</h2>
-
-  {{{widget.body}}}
+  {{#each templateFieldList as |field|}}
+    <label>
+      {{field.key}}:
+      <textarea name="{{field.key}}" value="{{field.value}}"></textarea>
+    </label>
+  {{/each}}
 </div>

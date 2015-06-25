@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624151045) do
+ActiveRecord::Schema.define(version: 20150625162331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20150624151045) do
 
   create_table "widgets", force: :cascade do |t|
     t.string   "name"
-    t.text     "body"
     t.integer  "location_x"
     t.integer  "location_y"
     t.integer  "width"

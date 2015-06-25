@@ -41,7 +41,7 @@ class Api::WidgetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def widget_params
-    params.require(:widget).permit(:name, :body, :location_x, :location_y, :width,
+    params.require(:widget).permit(:name, :location_x, :location_y, :width,
                                      :height, :custom_fields, :custom_field_types,
                                      template_fields: params[:widget][:template_fields].try(:keys))
 

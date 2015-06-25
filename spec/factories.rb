@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :widget do
     name "Widget Name"
-    body "<h1>Test Widget</h1>"
     location_x 10
     location_y 10
     width 200

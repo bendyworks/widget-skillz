@@ -11,7 +11,8 @@ App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   customEvents: {
-    dragstop: 'dragstop'
+    dragstop: 'dragstop',
+    resizestop: 'resizestop'
   },
   Resolver: Resolver
 });

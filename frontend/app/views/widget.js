@@ -11,9 +11,17 @@ export default Ember.View.extend({
     model.set('locationY', newY);
     model.save();
   },
+  resizestop: function(){
+    var model = this.get('controller.model');
+    var newWidth = parseInt( this.$('.widget').css('width') );
+    var newHeight = parseInt( this.$('.widget').css('height') );
+    model.set('height', newHeight);
+    model.set('width', newWidth);
+    model.save();
+  },
   didInsertElement: function() {
     this.$('.widget')
       .draggable({ grid: [ 80, 80 ] })
-      .resizable();
+      .resizable({ grid: [ 80, 80 ] });
   }
 });

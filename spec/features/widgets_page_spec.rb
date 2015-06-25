@@ -26,5 +26,29 @@ feature "Widgets page", type: :feature, js: true do
         expect(find_field('name').value).to match( /#{new_name}/ )
       end
     end
+
+    scenario "User updates multiple template values in widget" do
+      visit "/widgets"
+      new_name = 'new name 1'
+      new_title = 'Professor'
+      within "#widget#{widget1.id}" do
+        name_el = find("#widget_#{widget1.id}_name")
+        title_el = find("#widget_#{widget1.id}_title")
+
+        fill_in 'name', with: new_name
+
+        title_el.click
+        fill_in 'title', with: new_title
+
+        name_el.click
+      end
+
+      visit "/widgets"
+
+      within "#widget#{widget1.id}" do |el|
+        expect(find_field('name').value).to match( /#{new_name}/ )
+        expect(find_field('title').value).to match( /#{new_title}/ )
+      end
+    end
   end
 end

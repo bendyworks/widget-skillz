@@ -1,11 +1,15 @@
 <h2>Widget Template Form</h2>
 <label>
   Title:
-  {{input model.title}}
+  {{input value=model.title}}
 </label>
+<br>
 <button {{action "addField"}}>Add Field</button>
+<br>
 {{#each templateFields as |field|}}
-  {{input field.value}}
-  {{view "select" content=availableFieldTypes}}
+  {{input value=field.name}}
+  {{view "select" content=availableFieldTypes value=field.type}}
+  <br>
 {{/each}}
+<br>
 <button {{action "createWidgetTemplate"}}>Create</button>

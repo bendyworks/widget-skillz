@@ -1,13 +1,13 @@
 {{#if isNewWidget}}
+  <div class="widget" style="{{widget.style}}">
+    <p>I'm a new widget</p>
+    <button {{action "saveNewWidget"}}>Save</button>
+  </div>
+{{else}}
   <div id="widget{{widget.id}}" class="widget" style="{{widget.style}}">
     <h2>{{widget.name}}</h2>
     {{#each templateFieldList as |field|}}
       {{widget-field editable=false field=field action="saveField"}}
     {{/each}}
-  </div>
-{{else}}
-  <div class="widget" style="{{widget.style}}">
-    <p>I'm a new widget</p>
-    <button {{action "saveNewWidget"}}>Save</button>
   </div>
 {{/if}}

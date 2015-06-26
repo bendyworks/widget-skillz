@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
   }.property('templateFields'),
 
   isNewWidget: function(){
-    return this.get('model.id') !== null;
+    return this.get('model.id') === null;
   }.property('id'),
 
   actions: {

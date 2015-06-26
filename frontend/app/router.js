@@ -7,6 +7,10 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('widgets');
+
+  this.route('widgetTemplates', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

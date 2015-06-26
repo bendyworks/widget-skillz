@@ -29,6 +29,23 @@ describe Api::WidgetsController do
       expect(response.code).to eq('200')
       expect(response.body).to eq(widget.reload.to_json(root: true))
     end
+
+    context 'with json fields' do
+      let(:widget) { create(:widget, template_fields: {title: 'mr'}) }
+      let(:template_fields) { {start_date: '1-1-2015'} }
+
+      let(:widget_json_params) do
+        { id: widget.id,
+          widget: {
+            id: widget.id,
+            template_fields: template_fields } }
+      end
+
+      it 'replaces existing json fields with param values' do
+        put(:update, widget_json_params)
+        expect(widget.reload.template_fields).to eq(template_fields.as_json)
+      end
+    end
   end
 
   describe "#create" do
@@ -40,6 +57,22 @@ describe Api::WidgetsController do
       expect do
         post(:create, widget_create_params)
       end.to change{Widget.count}.by(1)
+    end
+
+    context 'with json fields' do
+      let(:template_fields) { {start_date: '1-1-2015'} }
+      let(:widget) do
+        attributes_for(:widget, template_fields: template_fields)
+      end
+
+      let(:widget_json_params) do
+        { widget: widget }
+      end
+
+      it 'replaces existing json fields with param values' do
+        post(:create, widget_json_params)
+        expect(assigns[:widget].template_fields).to eq(template_fields.as_json)
+      end
     end
   end
 

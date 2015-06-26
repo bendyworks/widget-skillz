@@ -1,12 +1,19 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Controller.extend({
   templateFieldList: function(){
     var model = this.model;
-    return _.map(model.get('templateFields'), function(value, key){
-      return {key: key,
-              value: value,
-              domID: 'widget_' + model.get('id') + '_' + key};
+    var promise = model.get('widgetTemplate').then(function(template) {
+      return _.map(model.get('templateFields'), function(value, key){
+        return {key: key,
+                type: template.get('fields')[key],
+                value: value,
+                domID: 'widget_' + model.get('id') + '_' + key};
+      });
+    });
+    return DS.PromiseArray.create({
+      promise: promise
     });
   }.property('templateFields'),
 

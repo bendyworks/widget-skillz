@@ -1,9 +1,6 @@
 <div id="widget{{widget.id}}" class="widget" style="{{widget.style}}">
   <h2>{{widget.name}}</h2>
   {{#each templateFieldList as |field|}}
-    <label>
-      {{field.key}}:
-      <textarea id="{{field.domID}}" {{action "saveField" field on="focusOut"}} name="{{field.key}}" value="{{field.value}}"></textarea>
-    </label>
+    {{widget-field field=field action="saveField"}}
   {{/each}}
 </div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :widgets
+    resources :widget_templates
   end
 
   get '/widgets', to: 'application#index'

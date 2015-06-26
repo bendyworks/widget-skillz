@@ -13,5 +13,6 @@ FactoryGirl.define do
 
   factory :widget_template do
     title "Widget Template"
+    fields ({})
   end
 end

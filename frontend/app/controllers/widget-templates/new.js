@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: ['application'],
   templateFields: [],
-  availableFieldTypes: ['', 'text', 'date', 'image'],
+  availableFieldTypes: Ember.computed.alias('controllers.application.availableFieldTypes'),
   actions: {
     addField: function(){
       var newFields = {

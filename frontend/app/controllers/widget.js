@@ -12,10 +12,15 @@ export default Ember.Controller.extend({
                 domID: 'widget_' + model.get('id') + '_' + key};
       });
     });
+
     return DS.PromiseArray.create({
       promise: promise
     });
   }.property('templateFields'),
+
+  isNewWidget: function(){
+    return this.get('model.id') !== null;
+  }.property('id'),
 
   actions: {
     saveField: function(field) {
@@ -25,6 +30,13 @@ export default Ember.Controller.extend({
 
       this.model.set('templateFields', fields);
       this.model.save();
-    }
+    },
+    setField: function(field){
+      var newVal = $('#' + field.domID).val();
+      var fields = this.model.get('templateFields');
+      fields[field.key] = newVal;
+
+      this.model.set('templateFields', fields);
+    },
   }
 });
